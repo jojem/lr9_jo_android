@@ -43,25 +43,44 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo){
         getMenuInflater().inflate(R.menu.context_menu_1, menu);
+        menu.add(1, 1, 0, "Blue");
+        menu.add(1, 2, 2, "Green");
+        menu.add(1, 3, 1, "Red");
+
     }
 
     @Override
     public boolean onContextItemSelected(MenuItem item){
         switch (item.getItemId()){
+            case 1:
+                Toast.makeText(this, "Blue color selected",
+                        Toast.LENGTH_SHORT).show();
+                ((TextView)findViewById(R.id.text)).setTextColor(Color.BLUE);
+                return true;
+            case 2:
+                Toast.makeText(this, "Green color selected",
+                        Toast.LENGTH_SHORT).show();
+                ((TextView)findViewById(R.id.text)).setTextColor(Color.GREEN);
+                return true;
+            case 3:
+                Toast.makeText(this, "Red color selected",
+                        Toast.LENGTH_SHORT).show();
+                ((TextView)findViewById(R.id.text)).setTextColor(Color.RED);
+                return true;
             case R.id.menu_1:
                 Toast.makeText(this, "Item 1 selected",
                         Toast.LENGTH_SHORT).show();
-                ((TextView)findViewById(R.id.text)).setTextColor(Color.BLUE);
+                ((TextView)findViewById(R.id.text)).setTextColor(Color.YELLOW);
                 return true;
             case R.id.menu_2:
                 Toast.makeText(this, "Item 2 selected",
                         Toast.LENGTH_SHORT).show();
-                ((TextView)findViewById(R.id.text)).setTextColor(Color.GREEN);
+                ((TextView)findViewById(R.id.text)).setTextColor(Color.rgb(25,176,150));
                 return true;
             case R.id.menu_3:
                 Toast.makeText(this, "Item 3 selected",
                         Toast.LENGTH_SHORT).show();
-                ((TextView)findViewById(R.id.text)).setTextColor(Color.RED);
+                ((TextView)findViewById(R.id.text)).setTextColor(Color.rgb(200, 40, 50));
                 return true;
             default:
                 return super.onContextItemSelected(item);
