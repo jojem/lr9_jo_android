@@ -7,16 +7,42 @@ import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+
+    ImageView imageViewAdded;
+    LinearLayout linearLayout;
+    int imgId = 0;
+
+    List<ImageView> arrayImageViews =new ArrayList<ImageView>();
+    int arrayLength;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        findViewById(R.id.text).setOnCreateContextMenuListener(this);
+        linearLayout = (LinearLayout)findViewById(R.id.linear_layout);
+    }
+
+
+    public void figureOutput(){
+        linearLayout.removeAllViews();
+        arrayLength = arrayImageViews.size();
+        for (int i=0; i<arrayLength; i++){
+            linearLayout.addView(arrayImageViews.get(i));
+        }
+    }
+
+    private void setDrawable(ImageView img){
+        img.setImageResource(R.drawable.rectangle);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
@@ -26,18 +52,32 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
-            case R.id.settings:
-                Toast.makeText(this, "Settings selected", Toast.LENGTH_SHORT).show();
+            case R.id.rect_add:
+                imageViewAdded = new ImageView(this);
+                setDrawable(imageViewAdded);
+                imgId+=1;
+                imageViewAdded.setId(imgId);
+                imageViewAdded.setOnCreateContextMenuListener(this);
+
+                arrayImageViews.add(imageViewAdded);
+                figureOutput();
+                Toast.makeText(this, "Rectangle added", Toast.LENGTH_SHORT).show();
                 return true;
-            case R.id.second:
-                Toast.makeText(this, "Second item selected", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.home:
-                Toast.makeText(this, "Home selected", Toast.LENGTH_SHORT).show();
+            case R.id.rect_delete:
+                arrayImageViews.remove(arrayLength-1);
+                figureOutput();
+                imgId-=1;
+
+                Toast.makeText(this, "Rectangle deleted", Toast.LENGTH_SHORT).show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+
+    public void onClickListener(View v){
+
     }
 
     @Override
@@ -48,20 +88,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onContextItemSelected(MenuItem item){
         switch (item.getItemId()){
-            case R.id.menu_1:
-                Toast.makeText(this, "Item 1 selected",
+            case R.id.make_bigger:
+                imageViewAdded.setImageResource(R.drawable.red_rectangle);
+                Toast.makeText(this, "Red color selected",
                         Toast.LENGTH_SHORT).show();
-                ((TextView)findViewById(R.id.text)).setTextColor(Color.BLUE);
                 return true;
-            case R.id.menu_2:
-                Toast.makeText(this, "Item 2 selected",
+            case R.id.make_smaller:
+                imageViewAdded.setImageResource(R.drawable.yellow_rectangle);
+                Toast.makeText(this, "Yellow color selected",
                         Toast.LENGTH_SHORT).show();
-                ((TextView)findViewById(R.id.text)).setTextColor(Color.GREEN);
-                return true;
-            case R.id.menu_3:
-                Toast.makeText(this, "Item 3 selected",
-                        Toast.LENGTH_SHORT).show();
-                ((TextView)findViewById(R.id.text)).setTextColor(Color.RED);
                 return true;
             default:
                 return super.onContextItemSelected(item);
