@@ -1,6 +1,5 @@
 package com.example.lr9_jo_android;
 
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -9,7 +8,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -32,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         linearLayout = (LinearLayout)findViewById(R.id.linear_layout);
     }
 
-
     public void figureOutput(){
         linearLayout.removeAllViews();
         arrayLength = arrayImageViews.size();
@@ -42,13 +39,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setDrawable(ImageView img){
-        img.setImageResource(R.drawable.rectangle);
+        img.setImageResource(R.drawable.purple_rectangle);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
@@ -75,11 +74,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-    public void onClickListener(View v){
-
-    }
-
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo){
         getMenuInflater().inflate(R.menu.context_menu_1, menu);
@@ -88,13 +82,28 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onContextItemSelected(MenuItem item){
         switch (item.getItemId()){
-            case R.id.make_bigger:
+            case R.id.make_red:
                 imageViewAdded.setImageResource(R.drawable.red_rectangle);
                 Toast.makeText(this, "Red color selected",
                         Toast.LENGTH_SHORT).show();
                 return true;
-            case R.id.make_smaller:
+            case R.id.make_yellow:
                 imageViewAdded.setImageResource(R.drawable.yellow_rectangle);
+                Toast.makeText(this, "Yellow color selected",
+                        Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.make_blue:
+                imageViewAdded.setImageResource(R.drawable.blue_rectangle);
+                Toast.makeText(this, "Yellow color selected",
+                        Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.make_green:
+                imageViewAdded.setImageResource(R.drawable.green_rectangle);
+                Toast.makeText(this, "Yellow color selected",
+                        Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.make_purple:
+                imageViewAdded.setImageResource(R.drawable.purple_rectangle);
                 Toast.makeText(this, "Yellow color selected",
                         Toast.LENGTH_SHORT).show();
                 return true;

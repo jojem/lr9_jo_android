@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Zoom +"
-        android:id="@+id/make_bigger">
+    <item android:title="Red"
+        android:id="@+id/make_red">
     </item>
-    <item android:title="Zoom -"
-        android:id="@+id/make_smaller">
+    <item android:title="Yellow"
+        android:id="@+id/make_yellow">
     </item>
+    <item android:title="Green"
+        android:id="@+id/make_green">
+    </item>
+    <item android:title="Blue"
+        android:id="@+id/make_blue">
+    </item>
+    <item android:title="Purple"
+        android:id="@+id/make_purple">
+    </item>
+
 </menu>
