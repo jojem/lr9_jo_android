@@ -98,17 +98,17 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.make_blue:
                 viewSelected.setImageResource(R.drawable.blue_rectangle);
-                Toast.makeText(this, "Yellow color selected",
+                Toast.makeText(this, "Blue color selected",
                         Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.make_green:
                 viewSelected.setImageResource(R.drawable.green_rectangle);
-                Toast.makeText(this, "Yellow color selected",
+                Toast.makeText(this, "Green color selected",
                         Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.make_purple:
                 viewSelected.setImageResource(R.drawable.purple_rectangle);
-                Toast.makeText(this, "Yellow color selected",
+                Toast.makeText(this, "Purple color selected",
                         Toast.LENGTH_SHORT).show();
                 return true;
             default:
